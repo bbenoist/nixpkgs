@@ -1443,6 +1443,8 @@ let
 
   ncompress = callPackage ../tools/compression/ncompress { };
 
+  ncrack = callPackage ../tools/security/ncrack { };
+
   ndisc6 = callPackage ../tools/networking/ndisc6 { };
 
   netboot = callPackage ../tools/networking/netboot {};
