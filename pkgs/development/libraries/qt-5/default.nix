@@ -102,6 +102,7 @@ stdenv.mkDerivation rec {
     -xcb
     -qpa xcb
     -${optionalString (cups == null) "no-"}cups
+    -${optionalString (pulseaudio == null) "no-"}audio-backend
 
     -no-eglfs
     -no-directfb
@@ -130,13 +131,14 @@ stdenv.mkDerivation rec {
     xlibs.libXcomposite libX11 libxcb libXext libXrender libXi
     fontconfig freetype openssl dbus.libs glib udev libxml2 libxslt pcre
     zlib libjpeg libpng libtiff sqlite icu
-    libwebp alsaLib gstreamer gst_plugins_base pulseaudio
+    libwebp alsaLib gstreamer gst_plugins_base
     xcbutil xcbutilimage xcbutilkeysyms xcbutilwm libxkbcommon
   ]
   # Qt doesn't directly need GLU (just GL), but many apps use, it's small and
   # doesn't remain a runtime-dep if not used
   ++ optionals mesaSupported [ mesa mesa_glu ]
   ++ optional (cups != null) cups
+  ++ optional (pulseaudio != null) pulseaudio
   ++ optional (mysql != null) mysql
   ++ optional (postgresql != null) postgresql;
 

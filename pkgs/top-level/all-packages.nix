@@ -6224,6 +6224,7 @@ let
   qt5 = callPackage ../development/libraries/qt-5 {
     mesa = mesa_noglu;
     cups = if stdenv.isLinux then cups else null;
+    pulseaudio = if config.pulseaudio.enable then pulseaudio else null;
     # GNOME dependencies are not used unless gtkStyle == true
     inherit (gnome) libgnomeui GConf gnome_vfs;
     bison = bison2; # error: too few arguments to function 'int yylex(...
